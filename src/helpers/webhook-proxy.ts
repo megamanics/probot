@@ -10,7 +10,7 @@ export const createWebhookProxy = (
     const smee = new SmeeClient({
       logger: opts.logger,
       source: opts.url,
-      target: `http://localhost:${opts.port}${opts.path}`,
+      target: `http://${opts.host}:${opts.port}${opts.path}`,
     });
     return smee.start();
   } catch (error) {
@@ -23,6 +23,7 @@ export const createWebhookProxy = (
 
 export interface WebhookProxyOptions {
   url?: string;
+  host?: string;
   port?: number;
   path?: string;
   logger: Logger;
